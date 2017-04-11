@@ -7,7 +7,7 @@
  @author Eddy Verbruggen
  */
 
-/** 
+/**
   Updates to be more aligned with updated Android version and with Google.
  @date March 15, 2015
  @author Sam Muggleworth (PointSource, LLC)
@@ -108,7 +108,7 @@ Fixes issue with G+ login window not closing correctly on ios 9
 
     NSString *clientId = [self reverseUrlScheme:reversedClientId];
 
-    NSString* scopesString = options[@"scopes"];
+    NSString* scopesString = @"https://www.google.com/m8/feeds";
     NSString* serverClientId = options[@"webClientId"];
     NSString *loginHint = options[@"loginHint"];
     BOOL offline = [options[@"offline"] boolValue];
@@ -123,7 +123,7 @@ Fixes issue with G+ login window not closing correctly on ios 9
     if (serverClientId != nil && offline) {
       signIn.serverClientID = serverClientId;
     }
-    
+
     if (hostedDomain != nil) {
         signIn.hostedDomain = hostedDomain;
     }
@@ -132,10 +132,10 @@ Fixes issue with G+ login window not closing correctly on ios 9
     signIn.delegate = self;
 
     // default scopes are email and profile
-    if (scopesString != nil) {
+    // if (scopesString != nil) {
         NSArray* scopes = [scopesString componentsSeparatedByString:@" "];
         [signIn setScopes:scopes];
-    }
+    // }
     return signIn;
 }
 
